@@ -25,6 +25,27 @@ class Teacher(Person):
     def __str__(self):
         return "Teacher: " + super().__str__()
 
+
+class Course:
+
+    def __init__(self,name,duration,complexity):
+        self.name = name
+        self.duration = duration
+        self.complexity = complexity
+
+    def get_name(self):
+        return self.name
+
+    def get_duration(self):
+        return self.duration
+
+    def get_complexity(self):
+        return self.complexity
+
+    def __str__(self):
+        return self.name
+
+
 class Career:
 
     def __init__(self,name):
@@ -42,25 +63,6 @@ class Career:
             if course.name == name:
                 return course
         return None
-
-    def __str__(self):
-        return self.name
-
-class Course:
-
-    def __init__(self,name,duration,complexity):
-        self.name = name
-        self.duration = duration
-        self.complexity = complexity
-
-    def get_name(self):
-        return self.name
-
-    def get_duration(self):
-        return self.duration
-
-    def get_complexity(self):
-        return self.complexity
 
     def __str__(self):
         return self.name
