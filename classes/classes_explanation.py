@@ -19,12 +19,12 @@ class Student(Person):
 
 class Teacher(Person):
 
-    def __init__(self,firstname,lastname,age):
+    def __init__(self,firstname,lastname,age,career):
         super().__init__(firstname,lastname,age)
+        self.career = career
 
     def __str__(self):
         return "Teacher: " + super().__str__()
-
 
 class Course:
 
@@ -44,7 +44,6 @@ class Course:
 
     def __str__(self):
         return self.name
-
 
 class Career:
 
@@ -67,8 +66,6 @@ class Career:
     def __str__(self):
         return self.name
 
-
-
 class Mark:
 
     def __init__(self,student,course,mark):
@@ -79,7 +76,6 @@ class Mark:
     def __str__(self):
         return " {} {} have {} in {} : ".\
         format(self.student.firstname,self.student.lastname, self.mark,self.course.name )
-
 
 class School:
 
@@ -94,8 +90,33 @@ class School:
     def add_teacher(self,teacher):
         self.teachers.append(teacher)
 
+    def get_students(self):
+        return self.students
+
+    def get_teachers(self):
+        return self.teachers
+
+    def is_student(self,name):
+        for x in self.students:
+            if name == x.firstname or name == x.lastname :
+                return True
+        return False
+
+    def is_teacher(self,name):
+        for x in self.teachers:
+            if name == x.firstname or name == x.lastname :
+                return True
+        return False
+
+    def get_student_by_age(self,age):
+        student_array = []
+        for student in self.students:
+            if age == student.age:
+                student_array.append(student)
+        if len(student_array) == 0:
+            return None
+        return student_array
+
+
     def __str__(self):
         return self.name
-
-
-

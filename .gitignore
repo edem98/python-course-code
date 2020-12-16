@@ -110,6 +110,9 @@ ENV/
 env.bak/
 venv.bak/
 
+# ignore database code
+databases
+
 # Spyder project settings
 .spyderproject
 .spyproject

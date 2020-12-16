@@ -1,4 +1,4 @@
-from classes_explanation import Course, Career, Student, School
+from classes_explanation import Course, Career, Student, School, Teacher
 
 # My courses
 python = Course("learn python",10,1)
@@ -20,18 +20,36 @@ software.add_course(html_css)
 software.add_course(javascript)
 software.add_course(sql)
 
-course = bigdata.search_course("learn python")
-if course:
-    print("I found the course: {} and his duration is {} hours".format(course.name,course.duration))
-else:
-    print("This course doesn't exist in this career")
+# school
+tamtam = School("TamTam Digital School")
+# students
+eliram = Student("eliram", "gbogbo", 30, bigdata)
+prosper = Student("prosper", "alikizang", 24, bigdata)
+# teachers
+serge = Teacher("serge", "kossi", 18, bigdata)
+eric = Teacher("eric", "tsogbe", 18, software)
+#Assign
+tamtam.add_student(eliram)
+tamtam.add_student(prosper)
+tamtam.add_teacher(serge)
+tamtam.add_teacher(eric)
+
+age = 30
+students = tamtam.get_student_by_age(age)
+for student in students:
+    print(student.firstname, "is {} years old".format(age))
 
 
-eric = Student("Eric","Tsogbe",23,software)
-serge = Student("serge","kossi",22,bigdata)
+# # students list
+# l = tamtam.get_students()
+# for i in l:
+#     print(i)
+#
+# r = tamtam.get_teachers()
+# for i in r:
+#     print(i)
 
-print(eric)
 
-x = int(5)
-tamtam = School("TamTam Digital School and Community Center")
-print(tamtam)
+
+
+
