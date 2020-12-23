@@ -13,5 +13,3 @@ def grid_traveler(m,n,dico={}):
         return 1
     dico[key] = grid_traveler(m-1,n,dico) + grid_traveler(m,n-1,dico)
     return dico[key]
-
-print(grid_traveler(18,18))
