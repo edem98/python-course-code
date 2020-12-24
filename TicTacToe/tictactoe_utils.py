@@ -81,7 +81,7 @@ def is_winner(board,player1,player2,):
     if check_line(board,player2,len(board)):
         winner = player2
         return winner
-    if check_oblic(board,player2,len(board)):
+    if check_oblique(board,player2,len(board)):
         winner = player2
         return winner
     # check if board if full
@@ -101,3 +101,15 @@ def set_position(board,x,y,player):
 def print_board(board):
     for line in board:
         print(line)
+
+def select_position(size):
+    line = size + 1
+    column = size + 1
+    while line > size or column > size:
+        try:
+            line = int(input("Enter your line (a valid line): "))
+            column = int(input("Enter your column (a valid column): "))
+        except ValueError:
+            print("Your input are not all integers,lower or equal to the size of the board ({}) ".format(size))
+
+    return line,column
