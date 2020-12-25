@@ -6,20 +6,20 @@ def check_column(board,player,size=3):
         count = 0
         j = 0
         while j < size:
-            if board[i][j] == player:
+            if board[j][i] == player:
                 count += 1
             j += 1
-
         if count == size:
             return True
     return False
+
 
 def check_line(board,player,size=3):
     for i in range(size):
         count = 0
         j = 0
         while j < size:
-            if board[j][i] == player:
+            if board[i][j] == player:
                 count += 1
             j += 1
 
@@ -44,7 +44,6 @@ def check_oblique(board,player,size=3):
     i = size - 1
     j = 0
     while i >= size :
-        print(i,j)
         if board[i][j] == player :
             count += 1
         j += 1
@@ -62,7 +61,7 @@ def is_full(board):
                 return False
     return True
 
-def is_winner(board,player1,player2,):
+def is_winner(board,player1,player2):
     winner = None
     # check if player1 wins
     if check_column(board,player1,len(board)):
