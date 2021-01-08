@@ -22,7 +22,6 @@ game_state = game.is_winner()
 
 
 while game_state is None :
-    print(game_state)
     played = False
     while not played:
         print(board)
@@ -32,7 +31,6 @@ while game_state is None :
             print("{}, is your turn to play".format(player_2.name))
 
         line , column = game.select_position()
-
 
         if board.set_position(line-1,column-1,current_player) is None:
             print("This place is not free")
