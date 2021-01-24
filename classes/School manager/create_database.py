@@ -20,7 +20,6 @@ cursor.execute("""
     use school;
 """)
 
-# create tables
 cursor.execute("""
 
     create table persons (
@@ -30,75 +29,116 @@ cursor.execute("""
         birthday date not null
     );
     
+""");
+
+cursor.execute("""
+
     create table courses (
         id int auto_increment primary key,
         name varchar(45) not null
     );
-    
-    create tables careers (
+
+""");
+
+cursor.execute("""
+
+    create table careers (
         id int auto_increment primary key,
         name varchar(45) not null
     );
     
-    create tables school (
+""");
+
+cursor.execute("""
+
+    create table schools (
         id int auto_increment primary key,
-        name varchar(45) not null
+        name  varchar(45) not null
     );
     
-    create tables teachers (
+""");
+
+cursor.execute("""
+
+    create table teachers (
         id int auto_increment primary key,
         person_id int not null,
         career_id int not null,
-        foreign key person_id reference persons(id),
-        foreign key career_id reference careers(id)
-    );
-    
-    create tables students (
+        foreign key (person_id) references persons(id),
+        foreign key (career_id) references careers(id)
+);
+
+""");
+
+cursor.execute("""
+
+create table students (
         id int auto_increment primary key,
         person_id int not null,
         career_id int not null,
-        foreign key person_id reference persons(id),
-        foreign key career_id reference careers(id)
+        foreign key (person_id) references persons(id),
+        foreign key (career_id) references careers(id)
     );
+        
+""");
+
+cursor.execute("""
     
-    create tables marks (
+    create table marks (
         id int auto_increment primary key,
         mark int not null,
         course_id int not null,
         student_id int not null,
-        foreign key course_id reference courses(id),
-        foreign key student_id reference students(id)
+        foreign key (course_id) references courses(id),
+        foreign key (student_id) references students(id)
     );
-    
-    create tables courses_careers (
+
+""");
+
+cursor.execute("""
+
+    create table courses_careers (
         course_id int not null,
         career_id int not null,
         complexity int not null,
         duration int not null,
+		student_id int not null,
         constraint primary key(course_id,career_id),
-        foreign key course_id reference courses(id),
-        foreign key student_id reference students(id)
+        foreign key (course_id) references courses(id),
+        foreign key (student_id) references students(id)
     );
     
-    create tables schools_students (
+""");
+
+cursor.execute("""
+    
+    create table schools_students (
         student_id int not null,
         school_id int not null,
         registration_date date not null,
         graduation_date date,
         constraint primary key(student_id,school_id),
-        foreign key school_id reference schools(id),
-        foreign key student_id reference students(id)
+        foreign key (school_id) references schools(id),
+        foreign key (student_id) references students(id)
     );
     
-    create tables schools_teachers (
-        student_id int not null,
+""");
+
+cursor.execute("""
+    
+    create table schools_teachers (
+        teacher_id int not null,
         school_id int not null,
         start_date date not null,
         end_date date not null,
-        constraint primary key(student_id,school_id),
-        foreign key school_id reference schools(id),
-        foreign key student_id reference students(id)
+        constraint primary key(teacher_id,school_id),
+        foreign key (school_id) references schools(id),
+        foreign key (teacher_id) references teachers(id)
     );
-    
-""",multi=True)
 
+""")
+
+cursor.execute("show tables;")
+print(cursor.fetchall())
+
+db.close()
