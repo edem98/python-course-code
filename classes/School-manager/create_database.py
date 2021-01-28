@@ -29,7 +29,7 @@ cursor.execute("""
         birthday date not null
     );
     
-""");
+""")
 
 cursor.execute("""
 
@@ -38,7 +38,7 @@ cursor.execute("""
         name varchar(45) not null
     );
 
-""");
+""")
 
 cursor.execute("""
 
@@ -47,7 +47,7 @@ cursor.execute("""
         name varchar(45) not null
     );
     
-""");
+""")
 
 cursor.execute("""
 
@@ -56,7 +56,7 @@ cursor.execute("""
         name  varchar(45) not null
     );
     
-""");
+""")
 
 cursor.execute("""
 
@@ -68,7 +68,7 @@ cursor.execute("""
         foreign key (career_id) references careers(id)
 );
 
-""");
+""")
 
 cursor.execute("""
 
@@ -80,7 +80,7 @@ create table students (
         foreign key (career_id) references careers(id)
     );
         
-""");
+""")
 
 cursor.execute("""
     
@@ -93,7 +93,7 @@ cursor.execute("""
         foreign key (student_id) references students(id)
     );
 
-""");
+""")
 
 cursor.execute("""
 
@@ -102,13 +102,12 @@ cursor.execute("""
         career_id int not null,
         complexity int not null,
         duration int not null,
-		student_id int not null,
         constraint primary key(course_id,career_id),
         foreign key (course_id) references courses(id),
-        foreign key (student_id) references students(id)
+        foreign key (career_id) references careers(id)
     );
     
-""");
+""")
 
 cursor.execute("""
     
@@ -122,7 +121,7 @@ cursor.execute("""
         foreign key (student_id) references students(id)
     );
     
-""");
+""")
 
 cursor.execute("""
     
@@ -138,7 +137,16 @@ cursor.execute("""
 
 """)
 
-cursor.execute("show tables;")
-print(cursor.fetchall())
+cursor.execute("""
 
-db.close()
+    create table schools_careers (
+        career_id int not null,
+        school_id int not null,
+        start_date date not null,
+        end_date date ,
+        constraint primary key(career_id,school_id),
+        foreign key (school_id) references schools(id),
+        foreign key (career_id) references careers(id)
+     );
+
+""")
