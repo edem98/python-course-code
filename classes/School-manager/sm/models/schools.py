@@ -12,7 +12,7 @@ def create_school(cursor,name):
 
 def get_school_by_id(cursor, school_id):
     cursor.execute(f'select * from schools where id = {school_id}')
-    return cursor.fetchone
+    return cursor.fetchone()
 
 
 def get_last_schools(cursor):

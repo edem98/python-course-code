@@ -16,3 +16,10 @@ def get_school_name():
 def display_school_list(schools):
     for school in schools:
         print(school)
+
+def get_school_id():
+    valid = False
+    while not valid:
+        school_id = int(input("Enter the school id: "))
+        if isinstance(school_id,int) and school_id > 0:
+            return school_id

@@ -13,7 +13,7 @@ def create_career_controller(cursor, name, school_id, start_date, end_date = Non
         school = create_schools_careers(cursor, career_id, school_id, start_date, end_date)
     if school:
         return "This career has been successfully created"
-    return "Invalid parameters"
+    return None
 
 
 
@@ -23,7 +23,7 @@ def get_careers_controller(cursor):
 
 
 def get_career_by_school_controller(cursor, school_id):
-    if get_school_by_id(cursor) is None:
+    if get_school_by_id(cursor, school_id) is None:
         return None
     career = get_career_by_school(cursor, school_id)
     return career
