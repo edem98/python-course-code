@@ -1,9 +1,13 @@
-def clearance_solde(price,days):
-    promo_price = price
-    for x in range(days):
-        promo = promo_price * 0.02
-        promo_price -= promo
+def match(w1,w2):
+    dic = {}
+    for i,v in enumerate(w2):
+        for char in w1:
+            if v == char:
+                if v in dic:
+                    if i not in dic[v]:
+                        dic[v].append(i)
+                else:
+                    dic[v] = [i]
+    return dic
 
-    return int(promo_price)
-
-print(clearance_solde(25000,7))
+print(match('javascript','java'))
